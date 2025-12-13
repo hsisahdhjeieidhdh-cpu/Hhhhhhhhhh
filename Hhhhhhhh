@@ -1,0 +1,2003 @@
+setfpscap(1000)
+
+-- Linoria UI Library Setup
+local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
+local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
+local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
+
+local Options = Library.Options
+local Toggles = Library.Toggles
+
+local Window = Library:CreateWindow({
+    Title = "injection.cc",
+    Footer = "version: 1.0.0",
+    Icon = 95816097006870,
+    NotifySide = "Right",
+    ShowCustomCursor = true,
+})
+
+local Tabs = {
+    Main = Window:AddTab("Main", "target"),
+    Visuals = Window:AddTab("Visuals", "eye"),
+    Rage = Window:AddTab("Rage", "zap"),
+    Misc = Window:AddTab("Misc", "settings"),
+    ["UI Settings"] = Window:AddTab("UI Settings", "settings"),
+}
+
+local function cooked(Sex3)
+if Sex3 then  
+    if getgenv().executed then
+        return  
+    end
+    getgenv().executed = true
+    print("hi")
+
+    local startTime = os.clock()
+
+    repeat wait() until game:IsLoaded()
+
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/CongoOhioDog/a176e78a0053eb3c1a48e58dece4ebb0/raw/b37a50cf92c1c427512ca44e6341315124521522/gistfile1.txt"))()
+
+    if not LPH_OBFUSCATED then
+        LPH_JIT = function(...) return ... end
+        LPH_NO_VIRTUALIZE  = function(...) return ... end
+    end
+
+    local getcustom = string.find(identifyexecutor(), "Delta")
+
+    local assetsupport = string.find(identifyexecutor(), "Wave") or string.find(identifyexecutor(), "Seliware") or string.find(identifyexecutor(), "AWP") or string.find(identifyexecutor(), "Argon") or string.find(identifyexecutor(), "Swift")
+
+    local function getAsset(path)
+        if getcustom then
+            return getcustomasset(string.format("images_stuff/%s", path))
+        else
+            return "rbxassetid://0"
+        end
+    end
+
+    downloadSound = LPH_NO_VIRTUALIZE(function(SoundName, SoundUrl)
+        local SoundPath = string.format("images_stuff/%s", SoundName)
+        if not isfile(SoundPath) then
+            writefile(SoundPath, game:HttpGet(SoundUrl))
+        end
+        return SoundPath
+    end)
+
+    local Injection = {
+        Tech = {
+            Enabled = false,
+            AutoPrediction = false,
+            AutoPredMode = "PingBased",
+            APMODE = "Calculate",
+            
+            RealPart = "HumanoidRootPart",
+            SelectedPart = "HumanoidRootPart",
+            AirPart = "RightFoot",
+            
+            HorizontalPrediction = 0.1,
+            VerticalPrediction = 0.1,
+            HorizontalPrediction2 = 0.1,
+            VerticalPrediction2 = 0.1,
+            
+            jumpoffset = 0,
+            jumpoffset2 = -0.3,
+            jumpoffset3 = 0.270,
+            
+            ShootDelay = 0.22,
+            NoGroundShot = true,
+            AutoAir = false,
+            
+            TracerEnabled = true,
+            LookAt = false,
+            
+            Camera = true,
+            CamPrediction1 = 0.1,
+            CamPrediction2 = 0.1,
+            SilentMode = false, 
+            smoothness = 0.9,
+            speedvalue = 1,
+            MacroSpeed = 0.2,
+            AntiCurve = true,
+            ResolverEnabled = false,
+            
+            easingStyle = "Sine",
+            easingDirection = "Out",
+            isTargetPlrMode = true,
+            shootDelay = 0.114,
+            lastShootTime = 0,
+            TriggerPot = true, 
+            
+            JumpBreak = false,
+            network = false,
+            UseVertical = false,
+            DotC = Color3.fromRGB(0, 0, 0),
+            WallCheck = false,
+            FriendCheck = false, 
+            KOCheck = false, 
+            SeatedCheck = false, 
+            TeamCheck = false,
+            UnlockOnKO = false,
+            CamWallCheck = false, 
+            CAMKo = false,
+            bool_at_tp = false, 
+            MacroDance = "YungBlud",
+            MacroDanceDelay = 0.300,
+            cframespeedtoggle = false,
+            VelocityDot = false,
+            AntiAimViewer = false,
+            ViewAt = false,
+            LockType = "Index",
+            RESOLVER = "MoveDirection",
+            CamResolverEnabled = false,
+            UseExternal = false,
+            CamAutoprediction = false,
+            AutoShoot = false,
+        }
+    }
+
+    Injection.Tech.SelectedPart = Injection.Tech.RealPart
+
+    local Sleeping = false
+
+    local TargetAimbot = {
+        Enabled = true,
+        Keybind = Enum.KeyCode.Q,
+        Autoselect = false,
+        Prediction = 0.164, 
+        RealPrediction = 0.164, 
+        Resolver = false, 
+        ResolverType = "Recalculate", 
+        JumpOffset = 0.06, 
+        RealJumpOffset = 0.09, 
+        HitParts = {"HumanoidRootPart"}, 
+        RealHitPart = "HumanoidRootPart", 
+        KoCheck = false, 
+        LookAt = false,
+        CSync = {
+            Enabled = false,
+            Type = "Orbit",
+            Distance = 10,
+            Height = 2,
+            Speed = 10,
+            RandomAmount = 10,
+            Color = Color3.fromRGB(255, 255, 255),
+            Saved = nil,
+            Visualize = false,
+        },
+        ViewAt = false,
+        Tracer = false,
+        Highlight = true,
+        HighlightColor1 = Color3.fromRGB(255, 255, 255),
+        HighlightColor2 = Color3.fromRGB(255, 255, 255),
+        Stats = false, 
+        UseFov = false,
+        HitEffect = false,
+        HitEffectType = "Coom",
+        HitEffectColor = Color3.fromRGB(255, 255, 255),
+        HitSounds = false,
+        HitSound = "Bameware",
+        HitChams = false,
+        HitChamsMaterial = Enum.Material.Neon,
+        HitChamsDuration = 2,
+        HitChamsColor = Color3.fromRGB(255, 0, 0),
+        HitChamColorEnabled = false,
+        HitChamsTransparency = 0,
+        HitChamsAcc = false, 
+        SkeleColor = Color3.fromRGB(155, 0, 155),
+        HitSkele = false,
+    }
+
+    local Highlight = false
+    local Hitnotify = false
+    local Flick = false
+    local desyncsleep = false
+    local Desync = false
+    local AntiLockType = "Zero"
+    local TargLockBind = Enum.KeyCode.Q
+    local Character = nil
+    local MainEvent = nil
+    local Macro22 = false
+    local Macro23 = false
+    local LockBut = false
+    local AutoShootButton = false
+    local Hide11 = false
+    local MacroAlreadLoaded = false
+    local Macro2 = false
+    local Noobidiot = false
+    local idiotdelay = 0
+    local ToolAlreadyLoaded = false
+
+    local UserInputService, Players, ReplicatedStorage, RunService, Workspace, Stats = 
+        cloneref(game:GetService("UserInputService")), cloneref(game:GetService("Players")), cloneref(game:GetService("ReplicatedStorage")), 
+        cloneref(game:GetService("RunService")), cloneref(game:GetService("Workspace")), cloneref(game:GetService("Stats"))
+
+    local CoreGui, StarterGui, SoundService, HttpService = 
+        cloneref(game:GetService("CoreGui")), cloneref(game:GetService("StarterGui")), cloneref(game:GetService("SoundService")), cloneref(game:GetService("HttpService"))
+
+    local LocalPlayer = cloneref(Players.LocalPlayer)
+    local Camera = cloneref(Workspace.CurrentCamera)
+
+    local TargBindEnabled, TargetPlr, TargResolvePos = true, nil, nil
+    local TargHighlight = Instance.new("Highlight")
+
+    TargHighlight.Parent = CoreGui
+    TargHighlight.FillColor = TargetAimbot.HighlightColor1
+    TargHighlight.OutlineColor = TargetAimbot.HighlightColor2
+    TargHighlight.FillTransparency = 0.5
+    TargHighlight.OutlineTransparency = 0
+    TargHighlight.Enabled = false
+
+    local AChams = false
+    local updateBreatheEffect = LPH_NO_VIRTUALIZE(function() 
+        if AChams then
+            local breathe_effect = math.atan(math.sin(tick() * 2)) * 2 / math.pi
+            TargHighlight.FillTransparency = 100 * breathe_effect * 0.01
+            TargHighlight.OutlineTransparency = 100 * breathe_effect * 0.01
+        end
+    end)
+
+    local HitEffectModule = {
+        Locals = {
+            Type = {
+                ["Nova"] = nil,
+                ["Crescent Slash"] = nil,
+                ["Coom"] = nil,
+                ["Cosmic Explosion"] = nil,
+                ["Slash"] = nil,
+                ["Atomic Slash"] = nil,
+                ["AuraBurst"] = nil,
+                ["Thunder"] = nil, 
+            },
+        },
+        Functions = {},
+        Settings = {HitEffect = {Color = TargetAimbot.HitEffectColor}}
+    }
+
+    local sounds = {
+        BlackPencil = "https://github.com/Shatapmatehabibi/Hitsounds/raw/main/bananapencil.mp3.mp3",
+        UWU = "https://github.com/CongoOhioDog/SoundS/blob/main/Uwu.mp3?raw=true",
+        Plooh = "https://github.com/CongoOhioDog/SoundS/blob/main/plooh.mp3?raw=true",
+        Hrntai = "https://github.com/CongoOhioDog/SoundS/blob/main/Hrntai.wav?raw=true",
+        Henta01 = "https://github.com/CongoOhioDog/SoundS/blob/main/henta01.wav?raw=true",
+        Bruh = "https://github.com/CongoOhioDog/SoundS/blob/main/psalms%20bruh%20sample.mp3?raw=true",
+        BoneBreakage = "https://github.com/CongoOhioDog/SoundS/blob/main/psalms%20bone%20breakage.mp3?raw=true",
+        Fein = "https://github.com/CongoOhioDog/SoundS/blob/main/psalms%20highly%20defined%20fein.mp3?raw=true",
+        Unicorn = "https://github.com/CongoOhioDog/SoundS/blob/main/shiny%20unicorn%20for%20dh%20_%20psalms.mp3?raw=true",
+        Kitty = "https://github.com/CongoOhioDog/SoundS/blob/main/Kitty.mp3?raw=true",
+        Bird = "https://github.com/CongoOhioDog/SoundS/blob/main/bird%20chirping%20for%20DH%20_%20psalms%20audio.mp3?raw=true",
+        BirthdayCake = "https://github.com/CongoOhioDog/SoundS/blob/main/Birthday%20cake%20for%20dh%20_%20psalms.mp3?raw=true", 
+        KenCarson =  "https://github.com/CongoOhioDog/SoundS/blob/main/ken_carson_-_jennifer_s_body_offici(2).mp3?raw=true"
+    }
+
+    for name, url in pairs(sounds) do
+        _G[name .. "Path"] = downloadSound(name .. ".mp3", url)
+    end
+
+    local hitsounds = {
+        ["RIFK7"]          = "rbxassetid://9102080552",
+        ["Bubble"]         = "rbxassetid://9102092728",
+        ["Minecraft"]      = "rbxassetid://5869422451",
+        ["Cod"]            = "rbxassetid://160432334",
+        ["Bameware"]       = "rbxassetid://6565367558",
+        ["Neverlose"]      = "rbxassetid://6565370984",
+        ["Gamesense"]      = "rbxassetid://4817809188",
+        ["Rust"]           = "rbxassetid://6565371338",
+        ["BlackPencil"]    = getAsset("BlackPencil.mp3"),
+        ["UWU"]            = getAsset("Uwu.mp3"),
+        ["Plooh"]          = getAsset("plooh.mp3"),
+        ["Moan"]           = getAsset("Hrntai.mp3"),
+        ["Hentai"]         = getAsset("Henta01.mp3"),
+        ["Bruh"]           = getAsset("Bruh.mp3"),
+        ["BoneBreakage"]   = getAsset("BoneBreakage.mp3"),
+        ["Fein"]           = getAsset("Fein.mp3"),
+        ["Unicorn"]        = getAsset("Unicorn.mp3"),
+        ["Kitty"]          = getAsset("Kitty.mp3"),
+        ["Bird"]           = getAsset("Bird.mp3"),
+        ["BirthdayCake"]   = getAsset("BirthdayCake.mp3"),
+        ["KenCarson"]      = getAsset("KenCarson.mp3")
+    }
+
+    local HitChamsFolder = Instance.new("Folder")
+    HitChamsFolder.Name = "HitChamsFolder"
+    HitChamsFolder.Parent = Workspace
+
+    -- Create effect attachments
+    do
+        -- Crescent Slash
+        local Attachment = Instance.new("Attachment")
+        Attachment.Name = "Attachment"
+        HitEffectModule.Locals.Type["Crescent Slash"] = Attachment
+        
+        -- Cosmic Explosion
+        local Attachment2 = Instance.new("Attachment")
+        Attachment2.Name = "Attachment"
+        HitEffectModule.Locals.Type["Cosmic Explosion"] = Attachment2
+        
+        -- Coom
+        local Attachment3 = Instance.new("Attachment")
+        HitEffectModule.Locals.Type["Coom"] = Attachment3
+        
+        -- Slash
+        local Attachment4 = Instance.new("Attachment")
+        HitEffectModule.Locals.Type["Slash"] = Attachment4
+        
+        -- Atomic Slash
+        local Attachment5 = Instance.new("Attachment")
+        HitEffectModule.Locals.Type["Atomic Slash"] = Attachment5
+        
+        -- Aura Burst
+        local attachment6 = Instance.new("Attachment")
+        attachment6.Name = "Attachment"
+        HitEffectModule.Locals.Type["AuraBurst"] = attachment6
+        
+        -- Thunder
+        local attachment7 = Instance.new("Attachment")
+        attachment7.Name = "Attachment"
+        HitEffectModule.Locals.Type["Thunder"] = attachment7
+        
+        -- Nova
+        local part = Instance.new("Part")
+        part.Parent = ReplicatedStorage
+        local attachment8 = Instance.new("Attachment")
+        attachment8.Name = "Attachment"
+        attachment8.Parent = part
+        HitEffectModule.Locals.Type["Nova"] = attachment8
+    end
+
+    HitEffectModule.Functions.Effect = function(character, color)
+        if not TargetAimbot.HitEffect and character then return end
+        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+        if not humanoidRootPart then return end
+
+        local effectAttachment = HitEffectModule.Locals.Type[TargetAimbot.HitEffectType]:Clone()
+        effectAttachment.Parent = humanoidRootPart
+
+        for _, emitter in pairs(effectAttachment:GetChildren()) do
+            if emitter:IsA("ParticleEmitter") then
+                emitter.Color = ColorSequence.new({
+                    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
+                    ColorSequenceKeypoint.new(0.495, color),
+                    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
+                })
+                emitter:Emit()
+            end
+        end
+
+        task.delay(2, function()
+            effectAttachment:Destroy()
+        end)
+    end
+
+    local PlayHitSound = LPH_NO_VIRTUALIZE(function() 
+        if TargetAimbot.HitSounds and hitsounds[TargetAimbot.HitSound] then
+            local sound = Instance.new("Sound")
+            sound.SoundId = hitsounds[TargetAimbot.HitSound]
+            sound.Parent = SoundService
+            sound:Play()
+            sound.Ended:Connect(function()
+                sound:Destroy()
+            end)
+        end
+    end)
+
+    local TweenService = game:GetService("TweenService")
+
+    local HitChams = LPH_NO_VIRTUALIZE(function(Player)
+        if not TargetAimbot.HitChams then return end
+
+        if Player and Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
+            Player.Character.Archivable = true
+            local Cloned = Player.Character:Clone()
+            Cloned.Name = "Player Clone"
+
+            local BodyParts = {
+                "Head", "UpperTorso", "LowerTorso",
+                "LeftUpperArm", "LeftLowerArm", "LeftHand",
+                "RightUpperArm", "RightLowerArm", "RightHand",
+                "LeftUpperLeg", "LeftLowerLeg", "LeftFoot",
+                "RightUpperLeg", "RightLowerLeg", "RightFoot"
+            }
+
+            for _, Part in ipairs(Cloned:GetChildren()) do
+                if Part:IsA("BasePart") then
+                    local PartValid = false
+                    for _, validPart in ipairs(BodyParts) do
+                        if Part.Name == validPart then
+                            PartValid = true
+                            break
+                        end
+                    end
+                    
+                    if not PartValid then
+                        Part:Destroy()
+                    end
+                elseif Part:IsA("Accessory") or Part:IsA("Tool") or Part.Name == "face" or Part:IsA("Shirt") or Part:IsA("Pants") or Part:IsA("Hat") then
+                    Part:Destroy()
+                end
+            end
+
+            if Cloned:FindFirstChild("Humanoid") then
+                Cloned.Humanoid:Destroy()
+            end
+
+            for _, BodyPart in ipairs(Cloned:GetChildren()) do
+                if BodyPart:IsA("BasePart") then
+                    BodyPart.CanCollide = false
+                    BodyPart.Anchored = true
+                    BodyPart.Transparency = TargetAimbot.HitChamsTransparency
+                    BodyPart.Color = TargetAimbot.HitChamsColor
+                    BodyPart.Material = TargetAimbot.HitChamsMaterial
+                end
+            end
+
+            if Cloned:FindFirstChild("Head") then
+                local Head = Cloned.Head
+                Head.Transparency = TargetAimbot.HitChamsTransparency
+                Head.Color = TargetAimbot.HitChamsColor
+                Head.Material = TargetAimbot.HitChamsMaterial
+
+                if Head:FindFirstChild("face") then
+                    Head.face:Destroy()
+                end
+            end
+
+            Cloned.Parent = game.Workspace
+
+            local tweenInfo = TweenInfo.new(
+                TargetAimbot.HitChamsDuration,
+                Enum.EasingStyle.Sine,
+                Enum.EasingDirection.InOut,
+                0,
+                true
+            )
+
+            for _, BodyPart in ipairs(Cloned:GetChildren()) do
+                if BodyPart:IsA("BasePart") then
+                    local tween = TweenService:Create(BodyPart, tweenInfo, { Transparency = 1 })
+                    tween:Play()
+                end
+            end
+
+            task.delay(TargetAimbot.HitChamsDuration, function()
+                if Cloned and Cloned.Parent then
+                    Cloned:Destroy()
+                end
+            end)
+        end
+    end)
+
+    local Client = Players.LocalPlayer
+    local Mouse = Client:GetMouse()
+
+    local HitChamsSkeleton = LPH_NO_VIRTUALIZE(function(Player)
+        if not TargetAimbot.HitSkele then return end
+
+        if Player and Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
+            local bones = {
+                {"Head", "UpperTorso"},
+                {"UpperTorso", "LowerTorso"},
+                {"UpperTorso", "RightUpperArm"},
+                {"RightUpperArm", "RightLowerArm"},
+                {"RightLowerArm", "RightHand"},
+                {"UpperTorso", "LeftUpperArm"},
+                {"LeftUpperArm", "LeftLowerArm"},
+                {"LeftLowerArm", "LeftHand"},
+                {"LowerTorso", "RightUpperLeg"},
+                {"RightUpperLeg", "RightLowerLeg"},
+                {"RightLowerLeg", "RightFoot"},
+                {"LowerTorso", "LeftUpperLeg"},
+                {"LeftUpperLeg", "LeftLowerLeg"},
+                {"LeftLowerLeg", "LeftFoot"}
+            }
+
+            local lines = {}
+
+            for _, bonePair in ipairs(bones) do
+                local parentBone = Player.Character:FindFirstChild(bonePair[1])
+                local childBone = Player.Character:FindFirstChild(bonePair[2])
+
+                if parentBone and childBone then
+                    local line = Instance.new("Part")
+                    line.Size = Vector3.new(0.02, 0.02, (parentBone.Position - childBone.Position).Magnitude)
+                    line.CFrame = CFrame.new(parentBone.Position, childBone.Position) * CFrame.new(0, 0, -line.Size.Z / 2)
+                    line.Anchored = true
+                    line.CanCollide = false
+                    line.Transparency = TargetAimbot.HitChamsTransparency
+                    line.Color = TargetAimbot.SkeleColor
+                    line.Material = Enum.Material.Neon
+                    line.Parent = workspace
+
+                    local tweenInfo = TweenInfo.new(TargetAimbot.HitChamsDuration / 0.2,  Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+                    local tween = TweenService:Create(line, tweenInfo, {Transparency = 1})
+                    tween:Play()
+
+                    table.insert(lines, line)
+                end
+            end
+
+            task.delay(TargetAimbot.HitChamsDuration, function()
+                for _, line in ipairs(lines) do
+                    if line and line.Parent then
+                        line:Destroy()
+                    end
+                end
+            end)
+        end
+    end)
+
+    local targetHealth = nil
+
+    local updateTargetHealth = LPH_NO_VIRTUALIZE(function()
+        if TargBindEnabled and TargetPlr and TargetPlr.Character then
+            local humanoid = TargetPlr.Character:FindFirstChild("Humanoid")
+            if humanoid then
+                local currentHealth = humanoid.Health
+                if currentHealth < targetHealth then
+                    local damageDealt = targetHealth - currentHealth
+                    local damageText = string.format("%d", math.round(damageDealt))
+                    local remainingValue = string.format("%d", math.max(currentHealth, 0))
+                    local selectedPart = tostring(Injection.Tech.SelectedPart)
+
+                    if Hitnotify then
+                        local realColor = "#" .. Library.Accent:ToHex()
+                        Library:Notify(
+                            '> Hit <font color="'..realColor..'">'..TargetPlr.DisplayName..'</font> on <font color="'..realColor..'">'..selectedPart..'</font> for <font color="'..realColor..'">'..damageText..'</font> ('..remainingValue..' remaining)',
+                            1.5
+                        )
+                    end
+                    HitEffectModule.Functions.Effect(TargetPlr.Character, TargetAimbot.HitEffectColor)
+                    PlayHitSound()
+                    HitChams(TargetPlr)
+                    HitChamsSkeleton(TargetPlr)
+                end
+                targetHealth = currentHealth
+            end
+        end
+    end)
+
+    RunService.RenderStepped:Connect(LPH_JIT(function()
+        if TargetAimbot.Enabled and TargBindEnabled and TargetAimbot.Highlight and TargetPlr and TargetPlr.Character and Highlight then
+            TargHighlight.FillColor = TargetAimbot.HighlightColor1
+            TargHighlight.OutlineColor = TargetAimbot.HighlightColor2
+            TargHighlight.Adornee = TargetPlr.Character
+            TargHighlight.Enabled = true
+        else
+            TargHighlight.Adornee = nil
+            TargHighlight.Enabled = false
+        end
+    end))
+
+    local TargetFuturePosition = LPH_NO_VIRTUALIZE(function()
+        local selectedPart = Injection.Tech.SelectedPart
+        local targetPart = TargetPlr.Character[selectedPart]
+
+        if targetPart then
+            local currentTick = tick()
+            local currentPos = targetPart.CFrame
+
+            local velocity = Vector3.new(0, 0, 0)
+            
+            if Injection.Tech.ResolverEnabled then
+                if Injection.Tech.RESOLVER == "Recalculate" then
+                    if lastPos then
+                        local delta = currentTick - lastTick
+                        if delta > 0 then
+                            local positionDifference = currentPos - lastPos
+                            velocity = positionDifference / delta
+                        end
+                    end
+                    lastPos = currentPos
+                    lastTick = currentTick
+                elseif Injection.Tech.RESOLVER == "MoveDirection" then
+                    velocity = TargetPlr.Character.Humanoid.MoveDirection * TargetPlr.Character.Humanoid.WalkSpeed
+                elseif Injection.Tech.RESOLVER == "LookVector" then
+                    velocity = targetPart.CFrame.LookVector * Injection.Tech.HorizontalPrediction * 1.5
+                end
+            else
+                velocity = targetPart.AssemblyLinearVelocity
+            end
+
+            local horizontalPrediction = Injection.Tech.HorizontalPrediction
+            local verticalPrediction = Injection.Tech.VerticalPrediction
+            local jumpOffset = Injection.Tech.jumpoffset or 0
+
+            if Injection.Tech.UseVertical then
+                return Vector3.new(
+                    currentPos.X + (velocity.X / horizontalPrediction),
+                    currentPos.Y + (velocity.Y / verticalPrediction),
+                    currentPos.Z + (velocity.Z / horizontalPrediction)
+                ) + Vector3.new(0, Injection.Tech.jumpoffset, 0)
+            else
+                return Vector3.new(
+                    currentPos.X + (velocity.X * horizontalPrediction),
+                    currentPos.Y + (velocity.Y * verticalPrediction),
+                    currentPos.Z + (velocity.Z * horizontalPrediction)
+                ) + Vector3.new(0, Injection.Tech.jumpoffset, 0)
+            end
+        end
+
+        return nil
+    end)
+
+    local lastPos = nil
+    local lastTick = nil
+
+    local NEWFrame = LPH_NO_VIRTUALIZE(function()
+        local targetPosition = TargetPlr.Character.HumanoidRootPart.Position
+
+        if TargetAimbot.CSync.Type == "Random" then
+            return CFrame.new(
+                targetPosition + Vector3.new(
+                    math.random(-TargetAimbot.CSync.RandomAmount, TargetAimbot.CSync.RandomAmount),
+                    math.random(0, TargetAimbot.CSync.RandomAmount),
+                    math.random(-TargetAimbot.CSync.RandomAmount, TargetAimbot.CSync.RandomAmount)
+                )
+            ) * CFrame.Angles(
+                math.rad(math.random(0, 360)),
+                math.rad(math.random(0, 360)),
+                math.rad(math.random(0, 360))
+            )
+        elseif TargetAimbot.CSync.Type == "Orbit" then
+            local CurrentTime = tick()
+            return CFrame.new(targetPosition) *
+                CFrame.Angles(0, 2 * math.pi * CurrentTime * TargetAimbot.CSync.Speed % (2 * math.pi), 0) *
+                CFrame.new(0, TargetAimbot.CSync.Height, TargetAimbot.CSync.Distance)
+        elseif TargetAimbot.CSync.Type == "Spiral" then
+            local CurrentTime = tick()
+            local angle = 2 * math.pi * CurrentTime * TargetAimbot.CSync.Speed % (2 * math.pi)
+            local spiralRadius = TargetAimbot.CSync.Distance + math.sin(CurrentTime) * TargetAimbot.CSync.RandomAmount
+            return CFrame.new(targetPosition) *
+                CFrame.Angles(0, angle, 0) *
+                CFrame.new(spiralRadius, TargetAimbot.CSync.Height, 0)
+        elseif TargetAimbot.CSync.Type == "Spherical" then
+            local CurrentTime = tick()
+            local radius = TargetAimbot.CSync.Distance
+            local sphericalX = radius * math.sin(CurrentTime) * math.cos(CurrentTime * TargetAimbot.CSync.Speed)
+            local sphericalY = radius * math.sin(CurrentTime) * math.sin(CurrentTime * TargetAimbot.CSync.Speed)
+            local sphericalZ = radius * math.cos(CurrentTime)
+            return CFrame.new(targetPosition + Vector3.new(sphericalX, sphericalY, sphericalZ))
+        elseif TargetAimbot.CSync.Type == "Attach" then
+            local attach = TargetFuturePosition()
+            return CFrame.new(attach)
+        end
+    end)
+
+    local desync_setback = Instance.new("Part")
+    desync_setback.Name = "im a skibidi rizzler"
+    desync_setback.Parent = workspace
+    desync_setback.Size = Client.Character:WaitForChild("HumanoidRootPart").Size
+    desync_setback.CanCollide = false
+    desync_setback.Anchored = true
+    desync_setback.Transparency = 1
+
+    RunService.Heartbeat:Connect(LPH_JIT(function()
+        updateBreatheEffect()
+
+        if Injection.Tech.cframespeedtoggle and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            local humanoidRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+            local moveDirection = game.Players.LocalPlayer.Character.Humanoid.MoveDirection
+            
+            humanoidRootPart.CFrame = humanoidRootPart.CFrame + moveDirection * (Injection.Tech.speedvalue / 0.5)
+        end
+    end))
+
+    if game.PlaceId == 9825515356 or game.PlaceId == 2788229376 then
+        Injection.Tech.LockType = "Index"
+    else
+        Injection.Tech.LockType = "Namecall"
+    end
+
+    local lastPosition = nil
+
+    RunService.RenderStepped:Connect(LPH_JIT(function()
+       if TargetPlr and TargetPlr.Character and 
+           game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and 
+           TargetPlr.Character:FindFirstChild("HumanoidRootPart") then
+
+            if TargetAimbot.CSync.Enabled and not TargetAimbot.CSync.Visualize then
+                local SigmaCFrame = NEWFrame()
+
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = SigmaCFrame
+                lastPosition = TargetPlr.Character.HumanoidRootPart.Position
+            end
+        elseif not TargetPlr and lastPosition then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(lastPosition)
+            lastPosition = nil
+        end
+    end))
+
+    Injection.Tech.RESOLVER = "MoveDirection"
+
+    if game.PlaceId == 9825515356 then
+        local LocalFramework = LocalPlayer.PlayerGui:WaitForChild("Framework")
+        local FrameworkEnvironment
+
+        if LocalFramework then
+            FrameworkEnvironment = getsenv(LocalFramework)
+        end
+
+        RunService.PostSimulation:Connect(function(DeltaTime)
+            if Injection.Tech.Enabled and Injection.Tech.LockType == "Index" and FrameworkEnvironment and TargetPlr then
+                FrameworkEnvironment._G.MOUSE_POSITION = TargetFuturePosition()
+            end
+        end)
+    else
+        local Hooks = {}
+        local mouse = game.Players.LocalPlayer:GetMouse()
+            Hooks[1] = hookmetamethod(mouse, "__index", newcclosure(function(self, index)
+                if index == "Hit" and Injection.Tech.LockType == "Index" and Injection.Tech.Enabled and TargetPlr and TargetPlr.Character and Injection.Tech.SelectedPart then
+                    local TargetFuturePosition = TargetFuturePosition()
+                    if TargetFuturePosition then
+                        return CFrame.new(TargetFuturePosition)
+                    end
+                end
+                return Hooks[1](self, index)
+            end))
+        end
+
+    local Argumen = {"UpdateMousePos", "GetMousePos", "MousePos", "MOUSE", "MousePosUpdate", "UpdateMousePosI2", "UpdateMousePosI",  "UpdateAim"}
+
+    local Argument
+    local mt = getrawmetatable(game)
+    local old = mt.__namecall
+    setreadonly(mt, false)
+
+    mt.__namecall = newcclosure(function(...)
+        local args = {...}
+        local method = getnamecallmethod()
+
+        if Injection.Tech.Enabled and Injection.Tech.LockType == "Namecall" then
+            if TargetPlr and TargetPlr.Character and method == "FireServer" then
+                for _, methodName in ipairs(Argumen) do
+                    if args[2] == methodName then
+                        Argument = methodName
+                        if not Injection.Tech.AntiAimViewer then
+                            args[3] = TargetFuturePosition()
+                            return old(unpack(args))
+                        end
+                    end
+                end
+            end
+        end
+
+        return old(...)
+    end)
+
+    setreadonly(mt, true)
+
+    for _, Value in pairs(game.ReplicatedStorage:GetChildren()) do
+        if Value.Name == "MainEvent" or Value.Name == "Bullets" or 
+           Value.Name == ".gg/untitledhood" or Value.Name == "Remote" or 
+           Value.Name == "MAINEVENT" then
+            MainEvent = Value
+            break 
+        end
+    end
+
+    local function CharAdded()
+        if Character then
+            Character.ChildAdded:Connect(function(tool)
+                if tool:IsA("Tool") then
+                    tool.Activated:Connect(function()
+                        if MainEvent and Argument then
+                            if Injection.Tech.Enabled and TargetPlr and TargetPlr.Character and Injection.Tech.AntiAimViewer then
+                                local AimPosition = TargetFuturePosition()
+                                MainEvent:FireServer(Argument, AimPosition)
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+    end
+
+    LocalPlayer.CharacterAdded:Connect(function(newchar)
+        Character = newchar
+        CharAdded()
+    end)
+
+    if LocalPlayer.Character then
+        Character = LocalPlayer.Character
+        CharAdded()
+    end
+
+    local AutoShoot = LPH_NO_VIRTUALIZE(function()
+        if TargetPlr then
+            local character = Client.Character
+            if character then
+                if TargetPlr.Character:FindFirstChildOfClass("ForceField") then
+                    return
+                end
+                
+                local tool = character:FindFirstChildOfClass("Tool")
+                if tool and tool:IsA("Tool") then
+                    tool:Activate()
+                end
+            end
+        end
+    end)
+
+    -- Changed from skull to a simple dot
+    local e = Instance.new("BillboardGui")
+    e.Name = "PP"
+    e.Size = UDim2.new(0.5, 0, 0.5, 0)
+    e.AlwaysOnTop = true
+
+    local img3 = Instance.new("Frame", e)
+    img3.Name = "img3"
+    img3.Size = UDim2.new(1, 0, 1, 0)
+    img3.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    img3.BorderSizePixel = 0
+    img3.BackgroundTransparency = 0.3
+    
+    -- Make it circular
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(1, 0)
+    corner.Parent = img3
+
+    local adorneePart = Instance.new("Part")
+    adorneePart.Size = Vector3.new(0, 0, 0)
+    adorneePart.Anchored = true
+    adorneePart.Parent = workspace
+
+    e.Adornee = adorneePart
+    e.Parent = workspace
+
+    RunService.RenderStepped:Connect(LPH_JIT(function()
+        if TargetPlr and TargetPlr.Character and Injection.Tech.VelocityDot and TargetPlr.Character:FindFirstChild(Injection.Tech.SelectedPart) then
+            local pos = TargetFuturePosition()
+            adorneePart.Transparency = 0
+            adorneePart.Position = pos
+            e.Enabled = true
+        else
+            adorneePart.Position = Vector3.new(0, 0, 0)
+            adorneePart.Transparency = 1
+            e.Enabled = false
+        end
+    end))
+
+    local targetSigm99928 = Injection.Tech.ShootDelay 
+    local targetSigmaPOBALLs = nil
+    local Shot2ing = false
+
+    local checkTarget = LPH_NO_VIRTUALIZE(function() 
+        if TargetPlr and TargetPlr.Character then
+            local humanoid = TargetPlr.Character:FindFirstChildOfClass("Humanoid")
+            local humanoidRootPart = TargetPlr.Character:FindFirstChild("HumanoidRootPart")
+
+            if humanoid and humanoidRootPart then
+                local SigmaAir = humanoid:GetState() == Enum.HumanoidStateType.Freefall
+
+                if SigmaAir and Injection.Tech.AutoAir then
+                    if not targetSigmaPOBALLs then
+                        targetSigmaPOBALLs = tick()
+                    else
+                        local airDuration = tick() - targetSigmaPOBALLs
+                        if airDuration >= targetSigm99928 then
+                            if not Shot2ing then
+                                Shot2ing = true
+                                while TargetPlr and TargetPlr.Character and SigmaAir do
+                                    AutoShoot()
+                                    task.wait(0.00001)
+
+                                    SigmaAir = humanoid:GetState() == Enum.HumanoidStateType.Freefall
+
+                                    if not SigmaAir then
+                                        Shot2ing = false
+                                        targetSigmaPOBALLs = nil
+                                        break
+                                    end
+                                end
+                                Shot2ing = false
+                            end
+                        end
+                    end
+                else
+                    targetSigmaPOBALLs = nil
+                    Shot2ing = false
+                end
+            end
+        end
+    end)
+
+    local function isPlayerOnSameTeam(player)
+        if not player.Team or not LocalPlayer.Team then
+            return false
+        end
+
+        return player.Team == LocalPlayer.Team
+    end
+
+    local function BehindWall(player)
+        if not player or player == game.Players.LocalPlayer or not player.Character then
+            return true
+        end
+
+        local targetPart = player.Character:FindFirstChild("HumanoidRootPart")
+        if not targetPart then
+            return true
+        end
+
+        local origin = workspace.CurrentCamera.CFrame.Position
+        local direction = (targetPart.Position - origin).unit * (targetPart.Position - origin).magnitude
+        local raycastParams = RaycastParams.new()
+        raycastParams.FilterDescendantsInstances = {game.Players.LocalPlayer.Character, player.Character}
+        raycastParams.FilterType = Enum.RaycastFilterType.Blacklist
+
+        local raycastResult = workspace:Raycast(origin, direction, raycastParams)
+        return raycastResult and raycastResult.Instance ~= nil
+    end
+
+    local function isPlayerKO(player)
+        if not player.Character then
+            return false
+        end
+
+        local bodyEffects = player.Character:FindFirstChild("BodyEffects")
+        if bodyEffects then
+            local KO = bodyEffects:FindFirstChild("K.O")
+            if KO and KO:IsA("BoolValue") and KO.Value then
+                return true
+            end
+        end
+
+        local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart and  humanoidRootPart.Anchored then
+            return true
+        end
+
+        return false
+    end
+
+    local function isPlayerSeated(player)
+        if not player.Character then
+            return false
+        end
+
+        local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid and humanoid.SeatPart then
+            return true
+        end
+
+        return false
+    end
+
+    local predictionTable =  {
+        {20, 0.08960952},
+        {30, 0.11252476},
+        {50, 0.13544},
+        {65, 0.1264236},
+        {70, 0.12533},
+        {80, 0.139340},
+        {100, 0.141987},
+        {110, 0.144634},
+        {120, 0.147281},
+        {130, 0.149928},
+        {140, 0.152575},
+        {150, 0.155222},
+        {160, 0.157869},
+        {170, 0.160516},
+        {180, 0.163163},
+        {190, 0.165810},
+        {200, 0.168457},
+        {210, 0.171104},
+        {220, 0.173751},
+        {230, 0.176398},
+        {240, 0.179045},
+        {250, 0.181692},
+        {260, 0.184339},
+        {270, 0.186986},
+        {280, 0.189633},
+        {290, 0.192280},
+        {300, 0.194927}
+    }
+
+    local sigma_table = {
+        {0, 0.04070},
+        {30, 0.05078}
+    }
+
+    local calculate = LPH_NO_VIRTUALIZE(function(Ping)
+        return (Ping / 1000) + 0.037
+    end)
+
+    local updatePredictionValue = LPH_NO_VIRTUALIZE(function() 
+        local pg = tonumber(string.split(game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString(), '(')[1])
+        
+        local function fiCl(tb)
+            local clVa, clDi = nil, math.huge
+            for _, en in ipairs(tb) do
+                local di = math.abs(pg - en[1])
+                if di < clDi then clDi, clVa = di, en[2] end
+            end
+            return clVa
+        end
+
+        if Injection.Tech.CamAutoprediction then
+            local clVa = fiCl(sigma_table)
+            if clVa then
+                Injection.Tech.CamPrediction1, Injection.Tech.CamPrediction2 = clVa, clVa
+            end
+        end
+
+        if pg and Injection.Tech.AutoPrediction then
+            local mo, clVa = Injection.Tech.APMODE
+            if mo == "Default" or mo == "Sets Based" then
+                clVa = fiCl(mo == "Sets Based" and predictionTable or sigma_table)
+                if clVa then
+                    Injection.Tech.HorizontalPrediction, Injection.Tech.VerticalPrediction = clVa, clVa * (mo == "Sets Based" and 0.910 or 1)
+                end
+            elseif mo == "Math Based" then
+                local function gePr(fa, ad) 
+                    return fa * math.log(pg + 1) + ad 
+                end
+                Injection.Tech.HorizontalPrediction = gePr(0.105, -0.342665)
+                Injection.Tech.VerticalPrediction = gePr(0.1, -0.3405)
+            elseif mo == "Calculate" then
+                local calcValue = calculate(pg)
+                Injection.Tech.HorizontalPrediction, Injection.Tech.VerticalPrediction = calcValue, calcValue
+            end
+        end
+    end)
+
+    local LookAtPlayer = LPH_NO_VIRTUALIZE(function(tg)
+        local lc = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+        local lrp, lh = lc:FindFirstChild("HumanoidRootPart"), lc:FindFirstChildOfClass("Humanoid")
+
+        if lh and lrp then
+            if Injection.Tech and Injection.Tech.LookAt and not Injection.Tech.Macroing then
+                if tg and tg.Character then
+                    local trp, th = tg.Character:FindFirstChild("HumanoidRootPart"), tg.Character:FindFirstChildOfClass("Humanoid")
+
+                    if th and trp then
+                        local lp, tp = lrp.Position, trp.Position
+                        local dir = Vector3.new(tp.X - lp.X, 0, tp.Z - lp.Z).unit
+
+                        lrp.CFrame = CFrame.new(lp, lp + dir)
+                        lh.AutoRotate = false
+                    end
+                end
+            else
+                lh.AutoRotate = true
+            end
+        elseif lc:FindFirstChild("Humanoid") then
+            lc.Humanoid.AutoRotate = true
+        end
+    end)
+
+    local ViewTarget = LPH_NO_VIRTUALIZE(function()
+        if TargetPlr and TargetPlr.Character and Injection.Tech.ViewAt then
+            Camera.CameraSubject = TargetPlr.Character.Humanoid
+        elseif not TargetAimbot.CSync.Visualize and not TargetPlr and not  Injection.Tech.ViewAt and LocalPlayer.Character:FindFirstChild("Humanoid") then
+            Camera.CameraSubject = LocalPlayer.Character.Humanoid
+        end
+    end)
+
+    local inAir = LPH_NO_VIRTUALIZE(function()
+        if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") then
+            local state = TargetPlr.Character.Humanoid:GetState()
+
+            if state == Enum.HumanoidStateType.Freefall then
+                Injection.Tech.jumpoffset = Injection.Tech.jumpoffset3
+                Injection.Tech.SelectedPart = Injection.Tech.AirPart
+            elseif state == Enum.HumanoidStateType.Jumping then
+                Injection.Tech.jumpoffset = Injection.Tech.jumpoffset2
+            else
+                Injection.Tech.SelectedPart = Injection.Tech.RealPart
+                Injection.Tech.jumpoffset = 0
+            end
+        end
+    end)
+
+    local function autospam()
+        if Injection.Tech.AutoShoot and LocalPlayer.Character:FindFirstChildWhichIsA("Tool") then
+            if not TargetPlr.Character:FindFirstChildOfClass("ForceField") then
+                LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):Activate()
+            end
+        end
+    end
+
+    RunService.Stepped:Connect(LPH_JIT(function()
+        checkTarget()
+        updateTargetHealth()
+        updatePredictionValue()
+        autospam()
+        LookAtPlayer(TargetPlr)
+        inAir()
+        ViewTarget()
+    end))
+
+    Recalculate = function(Character)
+        local Pos = Character.HumanoidRootPart.Position
+        local Tick = tick()
+
+        task.wait(0.1)
+
+        local NewPos = Character.HumanoidRootPart.Position
+        local NewTick = tick()
+
+        local Delta = (NewTick - Tick)
+        local PositionDifference = (NewPos - Pos)
+        local Velocity = PositionDifference / Delta
+
+        Pos = NewPos
+        Tick = NewTick
+        return Velocity
+    end
+
+    RunService.Heartbeat:Connect(LPH_JIT(function()
+        if Injection.Tech.Camera and TargetPlr and TargetPlr.Character and Injection.Tech.SelectedPart then
+            if TargetPlr.Character[Injection.Tech.SelectedPart] then
+                Injection.Tech.velocity = Injection.Tech.CamResolverEnabled 
+                    and Recalculate(TargetPlr.Character) 
+                    or TargetPlr.Character[Injection.Tech.SelectedPart].AssemblyLinearVelocity
+
+                Injection.Tech.targetPosition = Injection.Tech.UseExternal 
+                    and Vector3.new(
+                        TargetPlr.Character[Injection.Tech.SelectedPart].Position.X + (Injection.Tech.velocity.X / Injection.Tech.CamPrediction1),
+                        TargetPlr.Character[Injection.Tech.SelectedPart].Position.Y + (Injection.Tech.velocity.Y / Injection.Tech.CamPrediction2),
+                        TargetPlr.Character[Injection.Tech.SelectedPart].Position.Z + (Injection.Tech.velocity.Z / Injection.Tech.CamPrediction1)
+                    )
+                    or Vector3.new(
+                        TargetPlr.Character[Injection.Tech.SelectedPart].Position.X + (Injection.Tech.velocity.X * Injection.Tech.CamPrediction1),
+                        TargetPlr.Character[Injection.Tech.SelectedPart].Position.Y + (Injection.Tech.velocity.Y * Injection.Tech.CamPrediction2),
+                        TargetPlr.Character[Injection.Tech.SelectedPart].Position.Z + (Injection.Tech.velocity.Z * Injection.Tech.CamPrediction1)
+                    )
+
+                if Injection.Tech.CamWallCheck and BehindWall(TargetPlr) then
+                    return
+                end
+
+                if Injection.Tech.CAMKo and isPlayerKO(TargetPlr) then
+                    return
+                end
+
+                Camera.CFrame = Camera.CFrame:Lerp(
+                    CFrame.new(Camera.CFrame.Position, Injection.Tech.targetPosition), 
+                    Injection.Tech.smoothness or 0.1, 
+                    Enum.EasingStyle[Injection.Tech.easingStyle], 
+                    Enum.EasingDirection[Injection.Tech.easingDirection]
+                )
+            end
+        end
+    end))
+
+    LocalPlayer.Character:WaitForChild("Humanoid").StateChanged:Connect(function(old, new)
+        if Injection.Tech.JumpBreak and new == Enum.HumanoidStateType.Freefall then
+            task.wait(0.17)
+            LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, -15, 0)
+        end
+    end)
+
+    local Direction = Vector3.new(0, 0, -1)
+    local Xmin, XMax = -10000, 10000
+    local Ymin, YMax = -10000, 10000
+    local Zmin, ZMax = -10000, 10000
+
+    game:GetService("RunService").heartbeat:Connect(LPH_JIT(function()
+        local hrp = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if game.Players.LocalPlayer.Character and Desync then
+            local originalVelocity = hrp.Velocity
+
+            if AntiLockType == "Behind" then
+                Direction = Vector3.new(0, 0, -1)
+            elseif AntiLockType == "Down" then
+                Direction = Vector3.new(0, -1, 0)
+            elseif AntiLockType == "Forward" then
+                Direction = Vector3.new(0, 0, 1)
+            elseif AntiLockType == "Left" then
+                Direction = Vector3.new(-1, 0, 0)
+            elseif AntiLockType == "One" then
+                Direction = Vector3.new(1, 1, 1)
+            elseif AntiLockType == "Right" then
+                Direction = Vector3.new(1, 0, 0)
+            elseif AntiLockType == "Up" then
+                Direction = Vector3.new(0, 1, 0)
+            elseif AntiLockType == "Zero" then
+                Direction = Vector3.new(0, 0, 0)
+            elseif AntiLockType == "Shake" then
+                hrp.Velocity = Vector3.new(math.random(Xmin, XMax), math.random(Ymin, YMax), math.random(Zmin, ZMax))
+                game:GetService("RunService").RenderStepped:Wait()
+                hrp.Velocity = originalVelocity
+                return
+            elseif AntiLockType == "Multiply" then
+                hrp.Velocity = originalVelocity * 2
+                game:GetService("RunService").RenderStepped:Wait()
+                hrp.Velocity = originalVelocity
+                return
+            end
+
+            hrp.Velocity = Direction * (2^16)
+            game:GetService("RunService").RenderStepped:Wait()
+            hrp.Velocity = originalVelocity
+        end
+    end))
+
+    RunService.PostSimulation:Connect(function()
+        if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            if desyncsleep then
+                Sleeping = not Sleeping
+                setfflag("S2PhysicsSenderRate", 2)
+                sethiddenproperty(LocalPlayer.Character.HumanoidRootPart, "NetworkIsSleeping", Sleeping)
+            else
+                Sleeping = false
+                setfflag("S2PhysicsSenderRate", 13)
+                sethiddenproperty(LocalPlayer.Character.HumanoidRootPart, "NetworkIsSleeping", Sleeping)
+            end
+        end
+    end)
+
+    local cframe_to_offset = function(origin, target)
+        local actual_origin = origin * CFrame.new(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, -1, 0)
+        return actual_origin:ToObjectSpace(target):inverse()
+    end
+
+    bool_at_tp_tool = function(tool)
+        local old_grip = tool.Grip
+        if TargetPlr and TargetPlr.Character then
+            tool.Parent = LocalPlayer.Backpack
+            LocalPlayer.Character.RightHand.Anchored = false
+            tool.Grip = cframe_to_offset(LocalPlayer.Character.RightHand.CFrame, TargetPlr.Character.HumanoidRootPart.CFrame)
+            LocalPlayer.Character.RightHand.Anchored = true
+            tool.Parent = LocalPlayer.Character
+            RunService.RenderStepped:Wait()
+            tool.Parent = LocalPlayer.Backpack
+            LocalPlayer.Character.RightHand.Anchored = false
+            tool.Grip = old_grip
+            tool.Parent = LocalPlayer.Character
+        end
+    end
+
+    local connection
+    local tool_activated = function(character)
+        character.ChildAdded:Connect(function(child)
+            if Injection.Tech.bool_at_tp then
+                if child:IsA("Tool") then
+                    connection = child.Activated:Connect(function()
+                        bool_at_tp_tool(child)
+                    end)
+                end
+            end
+        end)
+
+        character.ChildRemoved:Connect(function(child)
+            if child:IsA("Tool") then
+                if connection then
+                    connection:Disconnect()
+                end
+            end
+        end)
+    end
+
+    LocalPlayer.CharacterAdded:Connect(function(new_character)
+        tool_activated(new_character)
+    end)
+
+    tool_activated(LocalPlayer.Character)
+
+    GetClosestToMouse = function()
+        local TargetPlr, Closest = nil, math.huge
+
+        for _, v in pairs(Players:GetPlayers()) do
+            if (v ~= Client and v.Character and v.Character:FindFirstChild("HumanoidRootPart")) then
+                local Position, OnScreen = Camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+                local Distance = (Vector2.new(Position.X, Position.Y) - Vector2.new(Mouse.X, Mouse.Y)).Magnitude
+
+                if (Distance < Closest and OnScreen) then
+                    Closest = Distance
+                    TargetPlr = v
+                end
+            end
+        end
+        return TargetPlr
+    end
+
+    -- Add this after the GetClosestToMouse function in your script
+local function CreateLockButton()
+    if LockBut then
+        Library:Notify("Lock button already loaded!", 2)
+        return
+    end
+    LockBut = true
+    
+    local FOV43 = Drawing.new("Circle")
+    FOV43.Transparency = 0.5
+    FOV43.Thickness = 2
+    FOV43.Color = Color3.new(1, 0, 0)
+    FOV43.Filled = false
+    FOV43.Radius = 250
+    FOV43.Position = Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2)
+    FOV43.Visible = false
+
+    local Sigmaballs = Instance.new("ScreenGui")
+    Sigmaballs.Name = "Sigmaballs"
+    Sigmaballs.Parent = game.CoreGui
+    Sigmaballs.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    Sigmaballs.ResetOnSpawn = false
+
+    local ImageButton = Instance.new("ImageButton")
+    ImageButton.Name = "ImageButton"
+    ImageButton.Parent = Sigmaballs
+    ImageButton.Active = true
+    ImageButton.Draggable = true
+    ImageButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    ImageButton.BackgroundTransparency = 0.5
+    ImageButton.Size = UDim2.new(0, 90, 0, 90)
+    ImageButton.Image = "rbxassetid://96086736054343"
+    ImageButton.Position = UDim2.new(0.5, -25, 0.5, -25)
+
+    local Ui2corner = Instance.new("UICorner")
+    Ui2corner.CornerRadius = UDim.new(0.2, 0)
+    Ui2corner.Parent = ImageButton
+
+    local SigmaOhioPlayer = function()
+        local player, CC = game.Players.LocalPlayer, workspace.CurrentCamera
+        local screenCenter = Vector2.new(CC.ViewportSize.X / 2, CC.ViewportSize.Y / 2)
+        local fovRadius, viewportSize = FOV43.Radius, CC.ViewportSize
+
+        local closestPlayer, shortestDistance = nil, math.huge
+        for _, v in pairs(game.Players:GetPlayers()) do
+            if v ~= player and v.Character and v.Character:FindFirstChild("HumanoidRootPart") 
+               and v.Character.Humanoid.Health > 0 then
+                if Injection.Tech.FriendCheck and player:IsFriendsWith(v.UserId) then
+                    continue
+                end
+
+                if Injection.Tech.TeamCheck and isPlayerOnSameTeam(v) then
+                    continue
+                end
+
+                if Injection.Tech.KOCheck and isPlayerKO(v) then
+                    continue
+                end
+
+                if Injection.Tech.SeatedCheck and isPlayerSeated(v) then
+                    continue
+                end
+
+                if Injection.Tech.WallCheck and BehindWall(v) then
+                    continue
+                end
+
+                local pos, onScreen = CC:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+                if onScreen and pos.X > 0 and pos.Y > 0 and pos.X < viewportSize.X and pos.Y < viewportSize.Y then
+                    local dist = (Vector2.new(pos.X, pos.Y) - screenCenter).Magnitude
+                    if dist < fovRadius and dist < shortestDistance then
+                        closestPlayer, shortestDistance = v, dist
+                    end
+                end
+            end
+        end
+
+        return closestPlayer
+    end
+
+    local function toggleLock()
+        if TargetAimbot.Enabled then
+            local Closest = SigmaOhioPlayer()
+            
+            if TargBindEnabled and TargetPlr then
+                TargBindEnabled = false
+                targetHealth = nil
+                game.Players.LocalPlayer.Character.Humanoid.AutoRotate = true
+                TargetPlr = nil
+                Workspace.CurrentCamera.CameraSubject = LocalPlayer.Character.Humanoid
+                if Injection.Tech.LookAt then
+                    LocalPlayer.Character.Humanoid.AutoRotate = true
+                end
+                ImageButton.Image = "rbxassetid://140623923630784"
+                Library:Notify("Untargeted", 2)
+            else
+                if Closest then
+                    TargBindEnabled = true
+                    TargetPlr = Closest
+                    
+                    if TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") then
+                        targetHealth = TargetPlr.Character.Humanoid.Health
+                    else
+                        return
+                    end
+                    
+                    ImageButton.Image = "rbxassetid://96086736054343"
+                    Library:Notify("Target Locked: <font color='" .. "#" .. Library.Accent:ToHex() .. "'>" .. tostring(TargetPlr.DisplayName) .. "</font>", 2)
+                else
+                    Library:Notify("No target found", 2)
+                end
+            end
+        end
+    end
+
+    local PussyTime = 0
+
+    RunService.Heartbeat:Connect(function(DeltaTime)
+        PussyTime = PussyTime + DeltaTime
+        
+        if PussyTime >= 0.1 and TargBindEnabled then
+            if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") then
+                if Injection.Tech.UnlockOnKO and isPlayerKO(TargetPlr)  then
+                    toggleLock()
+                    return
+                end
+            end
+            
+            PussyTime = 0
+        end
+    end)
+
+    ImageButton.MouseButton1Click:Connect(toggleLock)
+
+    UserInputService.InputBegan:Connect(function(input, processed)
+        if not processed and input.KeyCode == Enum.KeyCode.DPadDown then
+            toggleLock()
+        end
+    end)
+    
+    Library:Notify("Lock button loaded! Drag it anywhere on screen.", 3)
+end
+    -- Now create the UI with the new library
+
+    -- Main Tab - Aim Section
+    local AimSection = Tabs.Main:AddLeftGroupbox("Silent Aim")
+    
+    AimSection:AddToggle("SilentAimEnabled", {
+        Text = "Enabled",
+        Default = Injection.Tech.Enabled,
+        Callback = function(Value)
+            Injection.Tech.Enabled = Value
+        end
+    })
+    
+    AimSection:AddToggle("LookAtTarget", {
+        Text = "Look At Target",
+        Default = Injection.Tech.LookAt,
+        Callback = function(Value)
+            Injection.Tech.LookAt = Value
+        end
+    })
+    
+    AimSection:AddToggle("AntiAimViewer", {
+        Text = "Anti Aim Viewer",
+        Default = Injection.Tech.AntiAimViewer,
+        Callback = function(Value)
+            Injection.Tech.AntiAimViewer = Value
+        end
+    })
+    
+    AimSection:AddToggle("AutoAir", {
+        Text = "Auto Air",
+        Default = Injection.Tech.AutoAir,
+        Callback = function(Value)
+            Injection.Tech.AutoAir = Value
+        end
+    })
+    
+    AimSection:AddInput("AutoAirDelay", {
+        Default = tostring(Injection.Tech.ShootDelay),
+        Text = "Auto Air Delay",
+        Callback = function(Value)
+            targetSigm99928 = tonumber(Value)
+        end
+    })
+    
+    AimSection:AddDropdown("LockMethod", {
+        Values = {"Index", "Namecall"},
+        Default = Injection.Tech.LockType,
+        Text = "Lock Method",
+        Callback = function(Value)
+            Injection.Tech.LockType = Value
+        end
+    })
+    
+    local LockButtonSection = Tabs.Main:AddRightGroupbox("Lock Button")
+
+LockButtonSection:AddButton({
+    Text = "Load Lock Button",
+    Func = function()
+        CreateLockButton()
+    end,
+    Tooltip = "Creates a draggable lock button on screen"
+})
+
+LockButtonSection:AddToggle("UnlockOnDeath", {
+    Text = "Unlock On Death",
+    Default = Injection.Tech.UnlockOnKO,
+    Callback = function(Value)
+        Injection.Tech.UnlockOnKO = Value
+    end
+})
+
+    LockButtonSection:AddLabel("Lock Keybind")
+        :AddKeyPicker("LockKeybind", {
+            Default = "Q",
+            Text = "Lock Keybind",
+            NoUI = false,
+            Callback = function(Value)
+                TargLockBind = Value
+            end
+        })
+    
+    UserInputService.InputBegan:Connect(function(input, processed)
+    if not processed and input.KeyCode == TargLockBind then
+        local function toggleTarget()
+            local Closest = GetClosestToMouse()
+            if TargetAimbot.Enabled then
+                if TargBindEnabled and TargetPlr then
+                    TargBindEnabled = false
+                    targetHealth = nil
+                    TargetPlr = nil
+                    game.Players.LocalPlayer.Character.Humanoid.AutoRotate = true
+                    workspace.CurrentCamera.CameraSubject = Client.Character.Humanoid
+                    if Injection.Tech.LookAt then
+                        Client.Character.Humanoid.AutoRotate = true
+                    end
+                    Library:Notify("Untargeted", 2)
+                else
+                    TargBindEnabled = true
+                    TargetPlr = Closest
+
+                    if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") then
+                        targetHealth = TargetPlr.Character.Humanoid.Health
+                    else
+                        return
+                    end
+                    Library:Notify("Target Locked!", 2)
+                end
+            end
+        end
+        toggleTarget()
+    end
+end)
+
+    -- Hit Parts Section
+    local HitPartSection = Tabs.Main:AddLeftGroupbox("Hit Parts")
+    
+    HitPartSection:AddDropdown("BodyPart", {
+        Values = {"Head", "UpperTorso", "LowerTorso", "HumanoidRootPart", "LeftUpperArm", "LeftLowerArm", "LeftHand", "RightUpperArm", "RightLowerArm", "RightHand", "LeftUpperLeg", "LeftLowerLeg", "LeftFoot", "RightUpperLeg", "RightLowerLeg", "RightFoot"},
+        Default = "HumanoidRootPart",
+        Text = "Body Part",
+        Callback = function(Value)
+            Injection.Tech.RealPart = Value
+        end
+    })
+    
+    HitPartSection:AddDropdown("AirPart", {
+        Values = {"Head", "UpperTorso", "LowerTorso", "HumanoidRootPart", "LeftUpperArm", "LeftLowerArm", "LeftHand", "RightUpperArm", "RightLowerArm", "RightHand", "LeftUpperLeg", "LeftLowerLeg", "LeftFoot", "RightUpperLeg", "RightLowerLeg", "RightFoot"},
+        Default = "RightFoot",
+        Text = "Air Part",
+        Callback = function(Value)
+            Injection.Tech.AirPart = Value
+        end
+    })
+    
+    -- Prediction Section
+    local PredictionSection = Tabs.Main:AddLeftGroupbox("Prediction")
+    
+    PredictionSection:AddToggle("Division", {
+        Text = "Division",
+        Default = Injection.Tech.UseVertical,
+        Callback = function(Value)
+            Injection.Tech.UseVertical = Value
+        end
+    })
+    
+    PredictionSection:AddInput("HorizontalPrediction", {
+        Default = "0.1",
+        Text = "Horizontal Prediction",
+        Callback = function(Value)
+            Injection.Tech.HorizontalPrediction2 = tonumber(Value) or 0.1
+            task.wait(0.01)
+            Injection.Tech.HorizontalPrediction = Injection.Tech.HorizontalPrediction2
+            Injection.Tech.VerticalPrediction = Injection.Tech.VerticalPrediction2
+        end
+    })
+    
+    PredictionSection:AddInput("VerticalPrediction", {
+        Default = "0.1",
+        Text = "Vertical Prediction",
+        Callback = function(Value)
+            Injection.Tech.VerticalPrediction2 = tonumber(Value) or 0.1
+            task.wait(0.01)
+            Injection.Tech.HorizontalPrediction = Injection.Tech.HorizontalPrediction2
+            Injection.Tech.VerticalPrediction = Injection.Tech.VerticalPrediction2
+        end
+    })
+    
+    PredictionSection:AddInput("JumpOffset", {
+        Default = tostring(Injection.Tech.jumpoffset2),
+        Text = "Jump Offset",
+        Callback = function(Value)
+            Injection.Tech.jumpoffset2 = tonumber(Value)
+        end
+    })
+    
+    PredictionSection:AddInput("FallOffset", {
+        Default = tostring(Injection.Tech.jumpoffset3),
+        Text = "Fall Offset",
+        Callback = function(Value)
+            Injection.Tech.jumpoffset3 = tonumber(Value)
+        end
+    })
+    
+    PredictionSection:AddToggle("VisualizeDot", {
+        Text = "Visualize",
+        Default = Injection.Tech.VelocityDot,
+        Callback = function(Value)
+            Injection.Tech.VelocityDot = Value
+        end
+    })
+    
+    PredictionSection:AddToggle("ResolverEnabled", {
+        Text = "Resolver",
+        Default = Injection.Tech.ResolverEnabled,
+        Callback = function(Value)
+            Injection.Tech.ResolverEnabled = Value
+        end
+    })
+    
+    PredictionSection:AddToggle("AutoPrediction", {
+        Text = "Auto Prediction",
+        Default = Injection.Tech.AutoPrediction,
+        Callback = function(Value)
+            Injection.Tech.AutoPrediction = Value
+            Injection.Tech.HorizontalPrediction = Injection.Tech.HorizontalPrediction2
+            Injection.Tech.VerticalPrediction = Injection.Tech.VerticalPrediction2
+        end
+    })
+    
+    PredictionSection:AddDropdown("AutoPredMode", {
+        Values = {"Default", "Math Based", "Sets Based", "Calculate"},
+        Default = Injection.Tech.APMODE,
+        Text = "Auto Prediction Mode",
+        Callback = function(Value)
+            Injection.Tech.APMODE = Value
+        end
+    })
+    
+    PredictionSection:AddDropdown("ResolverMethod", {
+        Values = {"Recalculate", "MoveDirection", "LookVector"},
+        Default = "MoveDirection",
+        Text = "Resolver Method",
+        Callback = function(Value)
+            Injection.Tech.RESOLVER = Value
+        end
+    })
+    
+    -- Checks Section
+    local ChecksSection = Tabs.Main:AddRightGroupbox("Checks")
+    
+    ChecksSection:AddToggle("KOCheck", {
+        Text = "KnockOut Check",
+        Default = Injection.Tech.KOCheck,
+        Callback = function(Value)
+            Injection.Tech.KOCheck = Value
+        end
+    })
+    
+    ChecksSection:AddToggle("WallCheck", {
+        Text = "Wall Check",
+        Default = Injection.Tech.WallCheck,
+        Callback = function(Value)
+            Injection.Tech.WallCheck = Value
+        end
+    })
+    
+    ChecksSection:AddToggle("FriendCheck", {
+        Text = "Friend Check",
+        Default = Injection.Tech.FriendCheck,
+        Callback = function(Value)
+            Injection.Tech.FriendCheck = Value
+        end
+    })
+    
+    ChecksSection:AddToggle("VehicleCheck", {
+        Text = "Vehicle Check",
+        Default = Injection.Tech.SeatedCheck,
+        Callback = function(Value)
+            Injection.Tech.SeatedCheck = Value
+        end
+    })
+    
+    ChecksSection:AddToggle("TeamCheck", {
+        Text = "Team Check",
+        Default = Injection.Tech.TeamCheck,
+        Callback = function(Value)
+            Injection.Tech.TeamCheck = Value
+        end
+    })
+    
+    -- Visuals Tab - Target Visuals
+    local TargetVisualSection = Tabs.Visuals:AddLeftGroupbox("Target Visuals")
+    
+    TargetVisualSection:AddToggle("TargetHighlight", {
+        Text = "Target Highlight",
+        Default = TargetAimbot.Highlight,
+        Callback = function(Value)
+            TargetAimbot.Highlight = Value
+            Highlight = Value
+        end
+    })
+    
+    TargetVisualSection:AddToggle("AnimateHighlight", {
+        Text = "Animate Highlight",
+        Default = AChams,
+        Callback = function(Value)
+            AChams = Value
+        end
+    })
+
+    TargetVisualSection:AddToggle("WalkSpeedToggle", {
+        Text = "WalkSpeed",
+        Default = false,
+        Callback = function(Value)
+        if Value then
+            local humanoid =        LocalPlayer.Character:WaitForChild("Humanoid")
+            humanoid.WalkSpeed = Injection.Tech.speedvalue * 1000
+            humanoid.JumpPower = 80
+            
+              humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+                if Value then
+                    humanoid.WalkSpeed = Injection.Tech.speedvalue * 1000
+                end
+            end)
+        else
+              local humanoid =   LocalPlayer.Character:FindFirstChild("Humanoid")
+            if humanoid then
+                humanoid.WalkSpeed = 18
+                humanoid.JumpPower = 55
+            end
+        end
+    end
+ })
+
+    TargetVisualSection:AddSlider("WalkSpeedValue", {
+        Text = "WalkSpeed Value",
+         Min = 0, 
+         Max = 10,
+        Default = 3,
+        Rounding = 1,
+        Callback = function(Value)
+         Injection.Tech.speedvalue = Value
+     end
+  })
+  
+     
+-- CSync Section - In Visuals Tab
+local CSyncSection = Tabs.Visuals:AddLeftGroupbox("CSync")
+
+CSyncSection:AddToggle("CSyncEnabled", {
+    Text = "Enabled",
+    Default = TargetAimbot.CSync.Enabled,
+    Callback = function(Value)
+        TargetAimbot.CSync.Enabled = Value
+    end
+})
+
+CSyncSection:AddToggle("CSyncSpoof", {
+    Text = "Spoof",
+    Default = TargetAimbot.CSync.Visualize,
+    Callback = function(Value)
+        TargetAimbot.CSync.Visualize = Value
+    end
+})
+
+CSyncSection:AddDropdown("CSyncType", {
+    Values = {"Orbit", "Random", "Spiral", "Spherical", "Attach"},
+    Default = TargetAimbot.CSync.Type,
+    Text = "Type",
+    Callback = function(Value)
+        TargetAimbot.CSync.Type = Value
+    end
+})
+
+CSyncSection:AddSlider("CSyncDistance", {
+    Text = "Distance",
+    Min = 0,
+    Max = 100,
+    Default = TargetAimbot.CSync.Distance,
+    Rounding = 1,
+    Callback = function(Value)
+        TargetAimbot.CSync.Distance = Value
+    end
+})
+
+CSyncSection:AddSlider("CSyncHeight", {
+    Text = "Height",
+    Min = 0,
+    Max = 100,
+    Default = TargetAimbot.CSync.Height,
+    Rounding = 1,
+    Callback = function(Value)
+        TargetAimbot.CSync.Height = Value
+    end
+})
+
+CSyncSection:AddSlider("CSyncSpeed", {
+    Text = "Speed",
+    Min = 0,
+    Max = 100,
+    Default = TargetAimbot.CSync.Speed,
+    Rounding = 1,
+    Callback = function(Value)
+        TargetAimbot.CSync.Speed = Value
+    end
+})
+
+CSyncSection:AddSlider("CSyncRandomAmount", {
+    Text = "Random Amount",
+    Min = 0,
+    Max = 100,
+    Default = TargetAimbot.CSync.RandomAmount,
+    Rounding = 1,
+    Callback = function(Value)
+        TargetAimbot.CSync.RandomAmount = Value
+    end
+})
+
+    
+    -- Hit Detection Section
+    local HitDetectionSection = Tabs.Visuals:AddRightGroupbox("Hit Detection")
+    
+    HitDetectionSection:AddToggle("HitEffectToggle", {
+        Text = "Hit Effect",
+        Default = TargetAimbot.HitEffect,
+        Callback = function(Value)
+            TargetAimbot.HitEffect = Value
+        end
+    })
+    
+    HitDetectionSection:AddToggle("HitSoundToggle", {
+        Text = "Hit Sound",
+        Default = TargetAimbot.HitSounds,
+        Callback = function(Value)
+            TargetAimbot.HitSounds = Value
+        end
+    })
+    
+    HitDetectionSection:AddToggle("NotifyToggle", {
+        Text = "Notify",
+        Default = Hitnotify,
+        Callback = function(Value)
+            Hitnotify = Value
+        end
+    })
+    
+    HitDetectionSection:AddDropdown("HitEffectType", {
+        Values = {"Atomic Slash", "Crescent Slash", "Coom", "Nova", "Cosmic Explosion", "AuraBurst", "Thunder"},
+        Default = TargetAimbot.HitEffectType,
+        Text = "Effect Type",
+        Callback = function(Value)
+            TargetAimbot.HitEffectType = Value
+        end
+    })
+    
+    HitDetectionSection:AddDropdown("HitSoundType", {
+        Values = {"RIFK7", "Bubble", "Minecraft", "Cod", "Bameware", "Neverlose", "Gamesense", "Rust", "BlackPencil", "UWU", "Plooh", "Moan", "Hentai", "Bruh", "BoneBreakage", "Fein", "Unicorn", "Kitty", "Bird", "BirthdayCake", "KenCarson"},
+        Default = TargetAimbot.HitSound,
+        Text = "Sound Type",
+        Callback = function(Value)
+            TargetAimbot.HitSound = Value
+        end
+    })
+    
+    HitDetectionSection:AddColorPicker("HitEffectColor", {
+        Default = TargetAimbot.HitEffectColor,
+        Title = "Hit Effect Color",
+        Callback = function(Value)
+            TargetAimbot.HitEffectColor = Value
+        end
+    })
+
+    
+    -- Rage Tab - Prediction Breaker Section
+    local PredictionBreakerSection = Tabs.Rage:AddRightGroupbox("Prediction Breaker")
+    
+    PredictionBreakerSection:AddToggle("JumpPrediction", {
+        Text = "Jump Prediction",
+        Default = Injection.Tech.JumpBreak,
+        Callback = function(Value)
+            Injection.Tech.JumpBreak = Value
+        end
+    })
+    
+    PredictionBreakerSection:AddToggle("EnableAntiLock", {
+        Text = "Enable Anti Lock",
+        Default = Desync,
+        Callback = function(Value)
+            Desync = Value
+        end
+    })
+    
+    PredictionBreakerSection:AddToggle("AntiNetwork", {
+        Text = "Anti Network",
+        Default = desyncsleep,
+        Callback = function(Value)
+            desyncsleep = Value
+        end
+    })
+    
+    PredictionBreakerSection:AddDropdown("AntiLockType", {
+        Values = {"Multiply", "Shake", "Behind", "Down", "Forward", "Left", "One", "Right", "Up", "Zero"},
+        Default = AntiLockType,
+        Text = "Anti Lock Type",
+        Callback = function(Value)
+            AntiLockType = Value
+        end
+    })
+    
+    -- Misc Tab - Auto Shoot Section
+    local AutoShootSection = Tabs.Misc:AddLeftGroupbox("Auto Shoot")
+    
+    AutoShootSection:AddButton({
+        Text = "Load Auto Shoot Button",
+        Func = function()
+            if AutoShootButton then
+                Library:Notify("Already Loaded.", 3)
+                return
+            end
+            
+            AutoShootButton = true
+            Library:Notify("Auto Shoot button loaded! Check your screen for the button.", 3)
+        end,
+        Tooltip = "Creates a draggable auto shoot button"
+    })
+    
+    AutoShootSection:AddToggle("AutoShootToggle", {
+        Text = "Auto Shoot",
+        Default = Injection.Tech.AutoShoot,
+        Callback = function(Value)
+            Injection.Tech.AutoShoot = Value
+        end
+    })
+    
+    -- UI Settings
+    local MenuGroup = Tabs["UI Settings"]:AddLeftGroupbox("Menu")
+    
+    MenuGroup:AddToggle("KeybindMenuOpen", {
+        Default = Library.KeybindFrame.Visible,
+        Text = "Open Keybind Menu",
+        Callback = function(value)
+            Library.KeybindFrame.Visible = value
+        end
+    })
+    
+    MenuGroup:AddDropdown("NotificationSide", {
+        Values = { "Left", "Right" },
+        Default = "Right",
+        Text = "Notification Side",
+        Callback = function(Value)
+            Library:SetNotifySide(Value)
+        end
+    })
+    
+    MenuGroup:AddLabel("Menu bind")
+        :AddKeyPicker("MenuKeybind", { Default = "RightShift", NoUI = true, Text = "Menu keybind" })
+    
+    MenuGroup:AddButton({
+        Text = "Unload",
+        Func = function()
+            Library:Unload()
+        end,
+        Tooltip = "Unload the UI"
+    })
+    
+    Library.ToggleKeybind = Options.MenuKeybind
+    
+    -- Setup Theme and Save Managers
+    ThemeManager:SetLibrary(Library)
+    SaveManager:SetLibrary(Library)
+    SaveManager:IgnoreThemeSettings()
+    SaveManager:SetIgnoreIndexes({ "MenuKeybind" })
+    ThemeManager:SetFolder("injection.cc")
+    SaveManager:SetFolder("injection.cc/settings")
+    
+    ThemeManager:BuildConfigSection(Tabs["UI Settings"])
+    SaveManager:BuildConfigSection(Tabs["UI Settings"])
+    SaveManager:LoadAutoloadConfig()
+    
+    print("injection.cc loaded successfully!")
+end
+end
+
+-- Initialize the script
+cooked(true)
