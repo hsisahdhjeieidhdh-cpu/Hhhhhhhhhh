@@ -302,7 +302,7 @@ if Sex3 then
     HitChamsFolder.Name = "HitChamsFolder"
     HitChamsFolder.Parent = Workspace
 
-    -- Create effect attachments
+   -- Create effect attachments
     do
         -- Crescent Slash
         local Attachment = Instance.new("Attachment")
@@ -344,6 +344,7 @@ if Sex3 then
         attachment8.Parent = part
         HitEffectModule.Locals.Type["Nova"] = attachment8
     end
+
 
     HitEffectModule.Functions.Effect = function(character, color)
         if not TargetAimbot.HitEffect and character then return end
@@ -1602,6 +1603,72 @@ end)
             Injection.Tech.VerticalPrediction = Injection.Tech.VerticalPrediction2
         end
     })
+
+ -- ADD THIS RIGHT HERE:
+-- Camera Lock Section
+local CamLockSection = Tabs.Main:AddRightGroupbox("Camera Lock")
+
+CamLockSection:AddToggle("CameraLockEnabled", {
+    Text = "Enabled",
+    Default = Injection.Tech.Camera,
+    Callback = function(Value)
+        Injection.Tech.Camera = Value
+    end
+})
+
+CamLockSection:AddToggle("CamResolver", {
+    Text = "Resolver",
+    Default = Injection.Tech.CamResolverEnabled,
+    Callback = function(Value)
+        Injection.Tech.CamResolverEnabled = Value
+    end
+})
+
+-- SMOOTHNESS TEXTBOX
+CamLockSection:AddInput("CameraSmoothness", {
+    Default = tostring(Injection.Tech.smoothness),
+    Text = "Camera Smoothness",
+    Callback = function(Value)
+        Injection.Tech.smoothness = tonumber(Value)
+    end
+})
+
+CamLockSection:AddDropdown("EasingStyle", {
+    Values = {"Linear", "Quad", "Cubic", "Quart", "Quint", "Sine", "Exponential", "Circular", "Back", "Bounce", "Elastic"},
+    Default = Injection.Tech.easingStyle,
+    Text = "Easing Style",
+    Callback = function(Value)
+        Injection.Tech.easingStyle = Value
+    end
+})
+
+CamLockSection:AddDropdown("EasingDirection", {
+    Values = {"In", "Out", "InOut"},
+    Default = Injection.Tech.easingDirection,
+    Text = "Easing Direction",
+    Callback = function(Value)
+        Injection.Tech.easingDirection = Value
+    end
+})
+
+CamLockSection:AddDivider()
+CamLockSection:AddLabel("Checks")
+
+CamLockSection:AddToggle("CamWallCheck", {
+    Text = "Wall Check",
+    Default = Injection.Tech.CamWallCheck,
+    Callback = function(Value)
+        Injection.Tech.CamWallCheck = Value
+    end
+})
+
+CamLockSection:AddToggle("CamKoCheck", {
+    Text = "Knocked Check",
+    Default = Injection.Tech.CAMKo,
+    Callback = function(Value)
+        Injection.Tech.CAMKo = Value
+    end
+})
     
     PredictionSection:AddInput("JumpOffset", {
         Default = tostring(Injection.Tech.jumpoffset2),
@@ -1690,14 +1757,6 @@ end)
         end
     })
     
-    ChecksSection:AddToggle("VehicleCheck", {
-        Text = "Vehicle Check",
-        Default = Injection.Tech.SeatedCheck,
-        Callback = function(Value)
-            Injection.Tech.SeatedCheck = Value
-        end
-    })
-    
     ChecksSection:AddToggle("TeamCheck", {
         Text = "Team Check",
         Default = Injection.Tech.TeamCheck,
@@ -1705,6 +1764,42 @@ end)
             Injection.Tech.TeamCheck = Value
         end
     })
+
+-- Add this after ChecksSection but before the visual sections
+-- Camera Prediction Section
+local CamPredSection = Tabs.Main:AddRightGroupbox("Camera Prediction")
+
+CamPredSection:AddInput("CamHorizontalPred", {
+    Default = "0.1",
+    Text = "Horizontal Prediction",
+    Callback = function(Value)
+        camgay2 = tonumber(Value)
+        task.wait(0.01)
+        Injection.Tech.CamPrediction2 = camgay
+        Injection.Tech.CamPrediction1 = camgay2
+    end
+})
+
+CamPredSection:AddInput("CamVerticalPred", {
+    Default = "0.1",
+    Text = "Vertical Prediction",
+    Callback = function(Value)
+        camgay = tonumber(Value)
+        task.wait(0.01)
+        Injection.Tech.CamPrediction2 = camgay
+        Injection.Tech.CamPrediction1 = camgay2
+    end
+})
+
+CamPredSection:AddToggle("CamAutoPred", {
+    Text = "Auto Prediction",
+    Default = Injection.Tech.CamAutoprediction,
+    Callback = function(Value)
+        Injection.Tech.CamAutoprediction = Value
+        Injection.Tech.CamPrediction2 = camgay
+        Injection.Tech.CamPrediction1 = camgay2
+    end
+})
     
     -- Visuals Tab - Target Visuals
     local TargetVisualSection = Tabs.Visuals:AddLeftGroupbox("Target Visuals")
